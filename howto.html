@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How-To Guide - SampleApp Pro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SampleApp Pro Documentation</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="howto.html">How-To Guide</a></li>
+                    <li><a href="release-notes.html">Release Notes</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>How-To Guides</h2>
+            
+            <section class="howto">
+                <h3>How to Handle Large Datasets</h3>
+                <p>Best practices for processing massive data volumes:</p>
+                <pre><code>from sampleapp_pro import LargeDataset
+
+# Implement chunked processing
+dataset = LargeDataset('huge_database.csv')
+dataset.process_in_chunks(batch_size=100000)
+</code></pre>
+            </section>
+
+            <section class="howto">
+                <h3>Implementing Custom Transformations</h3>
+                <p>Create reusable data transformation functions:</p>
+                <pre><code>def custom_transformation(data):
+    # Apply complex business logic
+    cleaned_data = data.dropna()
+    normalized_data = (cleaned_data - cleaned_data.mean()) / cleaned_data.std()
+    return normalized_data
+</code></pre>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 SampleApp Pro. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

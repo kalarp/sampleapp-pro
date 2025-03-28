@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickstart - SampleApp Pro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SampleApp Pro Documentation</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="howto.html">How-To Guide</a></li>
+                    <li><a href="release-notes.html">Release Notes</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Quickstart Guide</h2>
+            
+            <section class="installation">
+                <h3>1. Installation</h3>
+                <pre><code>pip install sampleapp-pro
+npm install @sampleapp-pro/core</code></pre>
+            </section>
+
+            <section class="configuration">
+                <h3>2. Initial Configuration</h3>
+                <p>Create a configuration file <code>sampleapp.config.json</code>:</p>
+                <pre><code>{
+    "data_sources": ["postgresql", "mongodb"],
+    "transformation_mode": "realtime",
+    "log_level": "info"
+}</code></pre>
+            </section>
+
+            <section class="first-pipeline">
+                <h3>3. Create Your First Pipeline</h3>
+                <pre><code>from sampleapp_pro import Pipeline
+
+pipeline = Pipeline()
+pipeline.source('postgresql://mydb')
+    .transform(clean_data)
+    .destination('mongodb://target')
+    .run()</code></pre>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 SampleApp Pro. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
