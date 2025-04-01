@@ -5,7 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SampleApp Pro Documentation</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/cookies.js"></script>
+    <!-- Removed reference existing JS file to eliminate potential conflicts -->
+    <style>
+        /* Add these styles if they're not already in CSS file */
+        .cookie-banner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+    <script>
+        // Simple cookie functions
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to handle cookie consent
+        function handleCookieConsent(consent) {
+            // Set the cookie
+            setCookie('trackingConsent', consent ? 'true' : 'false', 365);
+            
+            // Hide the banner immediately - using both methods for redundancy
+            document.getElementById('cookieBanner').style.display = 'none';
+            document.getElementById('cookieBanner').classList.add('hidden');
+            
+            console.log('Cookie banner hidden and consent set to: ' + consent);
+            
+            return false; // Prevent default behavior
+        }
+
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners to buttons
+            document.getElementById('acceptCookies').addEventListener('click', function() {
+                handleCookieConsent(true);
+            });
+            
+            document.getElementById('declineCookies').addEventListener('click', function() {
+                handleCookieConsent(false);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -56,8 +113,9 @@
             <h4>Cookie Consent</h4>
             <p>This site uses cookies to analyze traffic and improve your experience. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
             <div class="cookie-buttons">
-                <button onclick="setTrackingConsent(true); hideCookieBanner();" class="btn">Accept</button>
-                <button onclick="setTrackingConsent(false); hideCookieBanner();" class="btn btn-secondary">Decline</button>
+                <!-- Changed to use IDs instead of onclick attributes -->
+                <button id="acceptCookies" class="btn">Accept</button>
+                <button id="declineCookies" class="btn btn-secondary">Decline</button>
             </div>
         </div>
     </div>
