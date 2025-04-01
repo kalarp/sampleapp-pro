@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SampleApp Pro Documentation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/cookies.js"></script>
 </head>
 <body>
     <div class="container">
@@ -48,6 +49,17 @@
         <footer>
             <p>© 2025 SampleApp Pro. All Rights Reserved.</p>
         </footer>
+    </div>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <h4>Cookie Consent</h4>
+            <p>This site uses cookies to analyze traffic and improve your experience. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+            <div class="cookie-buttons">
+                <button onclick="setTrackingConsent(true)" class="btn">Accept</button>
+                <button onclick="setTrackingConsent(false)" class="btn btn-secondary">Decline</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

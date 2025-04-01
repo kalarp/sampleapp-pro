@@ -64,12 +64,37 @@
                 </ul>
                 
                 <h3>6. Cookies & Tracking Technologies</h3>
-                <p>We use cookies and tracking technologies to improve website functionality and collect analytics data. You can manage your cookie preferences at any time.</p>
-                <ul>
-                    <li><strong>Essential Cookies</strong> – Required for website functionality (cannot be disabled)</li>
-                    <li><strong>Analytics Cookies</strong> – Used for tracking website usage (requires your consent)</li>
-                </ul>
-                <p>Since this is a private project, you are free to disable cookies in your browser settings.</p>
+<p>We use cookies and tracking technologies to improve website functionality and collect analytics data. You can manage your cookie preferences at any time.</p>
+<p>The following cookies may be used on this website:</p>
+<ul>
+    <li><strong>Essential Cookies</strong>
+        <ul>
+            <li>Purpose: Required for website functionality</li>
+            <li>Duration: Session</li>
+            <li>These cookies cannot be disabled</li>
+        </ul>
+    </li>
+    <li><strong>Analytics Cookies</strong>
+        <ul>
+            <li>Purpose: Used for tracking website usage statistics</li>
+            <li>Cookie name: <code>trackingConsent</code></li>
+            <li>Duration: 1 year</li>
+            <li>Provider: SampleApp Pro</li>
+            <li>These cookies require your explicit consent</li>
+        </ul>
+    </li>
+    <li><strong>Third-party Analytics Cookies (example only - no tracking yet)</strong>
+        <ul>
+            <li>Google Analytics (_ga, _gid, _gat)</li>
+            <li>Purpose: Track user behavior on the website</li>
+            <li>Duration: Varies (2 years for _ga)</li>
+            <li>Provider: Google LLC</li>
+            <li>These cookies are only set if you accept analytics cookies</li>
+        </ul>
+    </li>
+</ul>
+<p>You can control your cookie preferences by clicking the buttons in our cookie consent banner. You can also manage or delete cookies through your browser settings at any time.</p>
+<p>If you choose to decline cookies, certain parts of the website may not function as expected.</p>
                 
                 <h3>7. Your Rights</h3>
                 <p>Since this project follows best practices in data privacy, you have the right to:</p>
@@ -95,6 +120,50 @@
                 
                 <p>Thank you for participating in this educational project.</p>
             </section>
+
+            <div class="cookie-preferences">
+                <h3>Manage Cookie Preferences</h3>
+                <p>You can update your cookie preferences at any time:</p>
+                
+                <div class="cookie-options">
+                    <div class="cookie-option">
+                        <input type="checkbox" id="essentialCookies" checked disabled>
+                        <label for="essentialCookies">Essential Cookies</label>
+                        <span class="required">(Required)</span>
+                    </div>
+                    <div class="cookie-option">
+                        <input type="checkbox" id="analyticsCookies" onchange="updateCookiePreference(this)">
+                        <label for="analyticsCookies">Analytics Cookies</label>
+                        <span class="optional">(Optional)</span>
+                    </div>
+                </div>
+                
+                <button id="savePreferences" class="btn">Save Preferences</button>
+            </div>
+            
+            <script>
+            // Update checkbox based on current setting
+            document.addEventListener('DOMContentLoaded', function() {
+                const analyticsCookies = document.getElementById('analyticsCookies');
+                if (getCookie('trackingConsent') === 'true') {
+                    analyticsCookies.checked = true;
+                } else {
+                    analyticsCookies.checked = false;
+                }
+                
+                // Save preferences button
+                document.getElementById('savePreferences').addEventListener('click', function() {
+                    const consent = document.getElementById('analyticsCookies').checked;
+                    setTrackingConsent(consent);
+                    alert('Your cookie preferences have been saved.');
+                });
+            });
+            
+            function updateCookiePreference(checkbox) {
+                // This function is just for the visual feedback
+                // The actual saving happens when clicking "Save Preferences"
+            }
+            </script>
         </main>
 
         <footer>
