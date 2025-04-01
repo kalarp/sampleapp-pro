@@ -160,6 +160,36 @@ footer {
     margin-top: 30px;
 }
 
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.cookie-content h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.cookie-content p {
+    margin-bottom: 15px;
+}
+
+.cookie-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
     .container {
@@ -213,6 +243,16 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+    }
+    
+    /* Responsive cookie banner */
+    .cookie-banner {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .cookie-buttons {
+        flex-direction: column;
     }
 }
 
