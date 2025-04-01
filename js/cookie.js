@@ -1,4 +1,3 @@
-// cookies.js
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -31,18 +30,10 @@ function hasTrackingConsent() {
 
 function setTrackingConsent(consent) {
     setCookie('trackingConsent', consent, 365); // Store for a year
-    location.reload(); // Reload to apply changes
+    // Removed page reload to prevent disrupting user experience
 }
 
-// Check for tracking consent when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // If consent hasn't been given, show the cookie banner
-    if (getCookie('trackingConsent') === null) {
-        document.getElementById('cookieBanner').style.display = 'block';
-    }
-});
-
-// Initialize tracking if consent is given
+// Google Analytics initialization
 function initializeTracking() {
     if (hasTrackingConsent()) {
         // Google Analytics example (replace with your tracking ID)
@@ -60,5 +51,35 @@ function initializeTracking() {
     }
 }
 
-// Initialize tracking when page loads
-document.addEventListener('DOMContentLoaded', initializeTracking);
+// When page loads, check cookie status and set up listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // If consent hasn't been given, show the cookie banner
+    if (getCookie('trackingConsent') === null) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    } else {
+        // Make sure the banner is hidden if consent was previously given
+        document.getElementById('cookieBanner').style.display = 'none';
+    }
+    
+    // Set up event listeners for accept/decline buttons
+    const acceptButton = document.getElementById('acceptCookies');
+    if (acceptButton) {
+        acceptButton.addEventListener('click', function() {
+            setTrackingConsent(true);
+            document.getElementById('cookieBanner').style.display = 'none';
+            // Initialize tracking immediately after consent
+            initializeTracking();
+        });
+    }
+    
+    const declineButton = document.getElementById('declineCookies');
+    if (declineButton) {
+        declineButton.addEventListener('click', function() {
+            setTrackingConsent(false);
+            document.getElementById('cookieBanner').style.display = 'none';
+        });
+    }
+    
+    // Initialize tracking if consent was previously given
+    initializeTracking();
+});
