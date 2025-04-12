@@ -25,66 +25,6 @@
             display: none !important;
         }
     </style>
-    <script>
-        // Simple cookie functions
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        // Function to handle cookie consent
-        function handleCookieConsent(consent) {
-            // Set the cookie
-            setCookie('trackingConsent', consent ? 'true' : 'false', 365);
-            
-            // Hide the banner immediately - using both methods for redundancy
-            document.getElementById('cookieBanner').style.display = 'none';
-            document.getElementById('cookieBanner').classList.add('hidden');
-            
-            console.log('Cookie banner hidden and consent set to: ' + consent);
-            
-            return false; // Prevent default behavior
-        }
-
-        // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listeners to buttons
-            document.getElementById('acceptCookies').addEventListener('click', function() {
-                handleCookieConsent(true);
-            });
-            
-            document.getElementById('declineCookies').addEventListener('click', function() {
-                handleCookieConsent(false);
-            });
-        });
-    </script>
-    <!-- Hotjar Tracking Code for Site 5357976 (name missing) -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:5357976,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<!-- Plausible snippet -->
-<script defer data-domain="kalarp.github.io/sampleapp-pro" src="https://plausible.io/js/script.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5H340EZ24W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5H340EZ24W');
-</script>
 </head>
 <body>
     <div class="container">
